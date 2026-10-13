@@ -86,6 +86,7 @@ A to enter insert mode at the end of the line
 
 
 v to enter visual mode (Selection mode). You can also use the mouse and drag click 
+V to enter visual mode (select whole lines at a time)
 Ctrl+v or Ctrl+q to enter block visual mode (Select text, but vertically, )
 
 r to enter replace mode for 1 charater
@@ -215,7 +216,7 @@ Extremely useful, as a lot of deletion overwrite your clipboard
 
 
 ---
-================================  LSP (The good shit)  Language Server Protocol: Does the same job as a Code Analysis tool, but not integrated.  
+# LSP (The good shit)  Language Server Protocol: Does the same job as a Code Analysis tool, but not integrated.  
 Basically, all language feature: 
 Go to definition, peak definition, autocompletion, type information... depend on it
 
@@ -363,8 +364,27 @@ rv with files will open the last session witht he file that was opened then and 
 # Buffers
 
 
+<leader># 
+like 1-9 : Move to buffer # 
+0 : Move to buffer number 10
+
+
+
+<Ctrl+n> : Next buffer 
+<Ctrl+b> previous buffer 
+
+
+<leader>fb : Pick a buffer with telescope
+
+
+<leader>N : Move buffer right (for buffer reordering)
+<leader>B : Move buffer left (for buffer reordering)
+
+<leader>q : Close buffer. 
+
 --- 
-# Tmux like experience
+# Tmux integration and Tmux-like experience inside neovim
+## This is also a tmux recap
 Like with tmux, you can create and move from split. 
 There's an integration so Ctrl+s, <Arrow key> or <ijkl> 
 will move in and out. So you don't need to use another prefix for moving within panes and windows of neovim for most things 
@@ -372,6 +392,92 @@ will move in and out. So you don't need to use another prefix for moving within 
 Try using neovim, tmux and then crete splits inside neovim
 
 For things you need to move through panes and windows, the prefix is Ctrl+w, not Ctrl+s (The tmux prefix)
+
+
+The Tmux prefix is Ctrl+w
+The Vim prefix is ctrl+s
+
+However for navigation, you can use Ctrl+s, and it will magically know to move between neovim, or neovim <-> tmux depending on your position. 
+If you are are the border, if goes to the other, and if not, it moves within itself. 1 BUTTON USEFUL FOR BOTH PROGRAM!
+
+Remembers: 
+h: Create horizontal split 
+v : Create vertical split 
+x : close pane. If last pane in window, close window
+
+
+c:  Create new window
+b : Previous window
+n : next window 
+X : Close window
+
+arrow keys, or 
+   i 
+j  k  l   : move focus to pane in that direction
+
+So on tmux: 
+Ctrl+s, h : create a horizontal split 
+on Neovim 
+
+ctrl+w, h : create a neovim split 
+
+
+To close a pane in neovim, use :q , like to exit neovim 
+
+Ctrl+s, # : Move to window #, 1-9 -> 1-9. 0->10
+
+---
+# Commenting in and out lines
+select mulitple lines with V
+press gc 
+it will toggle commenting a line
+
+
+or, if not selected on any line: 
+
+gcc: IT will toggle commenting the line in and out. 
+
+in Python 
+```python
+# This is a python comment
+# Put your cursor on the line above and press gcc in normal mode. Then again
+
+```
+
+in Lua: 
+```lua 
+-- This is a comment. gcc to toggle in and out
+```
+
+in bash 
+```bash
+# This is a comment
+```
+
+In C: 
+```c
+// this is a comment 
+
+/* this is also a comment */
+
+```
+
+Depending on the language, it will figure out what the comment string and pattern is and just do it. 
+## Very useful to quickly activate and deactivate lines of codes!!!! 
+
+
+Even markdown files have comments 
+
+Line 1 
+Line 2 
+Line 3 
+
+Put cursor on L of line 1. 
+Press Shift+v (V) 
+press down arrow twice (move cursor and selection to line 3)
+press gc
+
+Commented out all these 3 lines
 
 --- 
 # Combos / Vim actions 
@@ -453,63 +559,6 @@ So for complex combos, you might need to learn the og keybinds too. But that pro
 only d$ is really useful imo
 
 
-
----- 
-# Tmux integration and tmux like inside neovim 
-## This is also a tmux recap
-The Tmux prefix is Ctrl+w
-The Vim prefix is ctrl+s
-
-However for navigation, you can use Ctrl+s, and it will magically know to move between neovim, or neovim <-> tmux depending on your position. 
-If you are are the border, if goes to the other, and if not, it moves within itself. 1 BUTTON USEFUL FOR BOTH PROGRAM!
-
-Remembers: 
-h: Create horizontal split 
-v : Create vertical split 
-x : close pane. If last pane in window, close window
-
-
-c:  Create new window
-b : Previous window
-n : next window 
-X : Close window
-
-arrow keys, or 
-   i 
-j  k  l   : move focus to pane in that direction
-
-So on tmux: 
-Ctrl+s, h : create a horizontal split 
-on Neovim 
-
-ctrl+w, h : create a neovim split 
-
-
-To close a pane in neovim, use :q , like to exit neovim 
-
-Ctrl+s, # : Move to window #, 1-9 -> 1-9. 0->10
-
-
-----
-# Buffers
-
-<leader># 
-like 1-9 : Move to buffer # 
-0 : Move to buffer number 10
-
-
-
-<Ctrl+n> : Next buffer 
-<Ctrl+b> previous buffer 
-
-
-<leader>fb : Pick a buffer with telescope
-
-
-<leader>N : Move buffer right (for buffer reordering)
-<leader>B : Move buffer left (for buffer reordering)
-
-<leader>q : Close buffer. 
 
 
 
